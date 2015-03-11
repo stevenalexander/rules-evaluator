@@ -86,7 +86,7 @@ So when ANTLR parses the string "status equals approved", it can identify:
 * The specification as type StringEqualsComparisonSpecificationExpression
 
 This is can be easily parsed and used to build a Rule expression out of Java objects that can be evaluated against a
-set of data (i.e. evaluating json data "{\"status\": \"approved\"}" gives true).
+set of data (i.e. evaluating json data `{"status": "approved"}` gives true).
 
 The grammar can be made to parse complex statements, allowing definition of complex business rules out of a
 series of simple specifications in the grammar.
@@ -114,7 +114,7 @@ quickly test and apply changes. Giving the users who understand the rules the be
 gives them extremely useful functionality and avoids the need for defining Rule requirements documentation and long
 periods of testing for each time the rules are updated.
 
-## ImplementationDetails
+## Implementation details
 
 I'd recommend reading up about [ANTLR](http://www.antlr.org/) before driving into the code, as you need to understand
 the grammar and how it parses rules to understand how the tree builder constructs the expressions and applies data to
@@ -122,7 +122,7 @@ it.
 
 ANTLR4 is included in the project via [sbt-antlr4](https://github.com/ihji/sbt-antlr4). The ANTLR grammar file is
 located at `src/main/antlr4/RuleSet.g4` and generated ANTLR classes based on that grammar are in
-`/Users/stevena/source/test/rules-evaluator/target/scala-2.11/classes/com/example/rules`. The generated parser is used
+`target/scala-2.11/classes/com/example/rules`. The generated parser is used
 in the `RuleSetCompiler` and a listener, `RuleSetTreeBuilder`, is attached to it to react to events when parsing Rules.
 
 `RuleSetTreeBuilder` has a number of methods that are fired when the parser enters and exits identified tokens and
